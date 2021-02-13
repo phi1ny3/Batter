@@ -21,7 +21,7 @@ class MoveActorsAction(Action):
         """
         for group in cast.values():
             for actor in group:
-                if not actor.get_velocity().is_zero():
+                # if not actor.get_velocity().is_zero():
                     self._move_actor(actor)
 
     def _move_actor(self, actor):
