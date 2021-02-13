@@ -28,8 +28,13 @@ class HandleCollisionsAction(Action):
             if ball.get_position().get_x >= paddle.get_position().get_x and ball.get_position().get_x <= (paddle.get_position().get_x + 11):
                 ball.set_velocity(Point.reverse_y(ball.get_velocity))
 
-        if ball.get_position().get_y == MAX_Y:
+        if ball.get_position().get_y == constants.MAX_Y:
             ball.set_velocity(Point.reverse_y(ball.get_velocity))
         
-        if ball.get_position().get_x == 0 or ball.get_position().get_x == MAX_X:
-            quit()
+        if ball.get_position().get_x == 0 or ball.get_position().get_x == constants.MAX_X:
+            ball.set_velocity(Point.reverse_x(ball.get_velocity))
+        
+
+
+
+    
