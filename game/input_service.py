@@ -20,6 +20,9 @@ class InputService:
             self (InputService): An instance of InputService.
         """
         self._screen = screen
+        self._keys = {}
+        self._keys[97] = Point(-1, 0) # a
+        self._keys[100] = Point(1, 0) # d
 
     def get_letter(self):
         """Gets the letter that was typed. If the enter key was pressed returns 
