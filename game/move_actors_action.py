@@ -21,8 +21,8 @@ class MoveActorsAction(Action):
         """
         for group in cast.values():
             for actor in group:
-                # if not actor.get_velocity().is_zero():
-                    self._move_actor(actor)
+                if not actor.get_velocity().is_zero():
+                     self._move_actor(actor)
 
     def _move_actor(self, actor):
         """Moves the given actor to its next position according to its 
