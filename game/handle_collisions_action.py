@@ -18,6 +18,5 @@ class HandleCollisionsAction(Action):
         brick = cast["brick"][0] # there's only one
         paddle = cast["paddle"][0] # there's only one
         ball = cast["ball"]
-        for brick in brick:
-            if ball.get_position().equals(brick.get_position()):
-                
+        # for brick in brick:
+        #     if ball.get_position().equals(brick.get_position()):
