@@ -1,4 +1,5 @@
 import sys
+from game.point import Point
 from asciimatics.event import KeyboardEvent
 
 class InputService:
@@ -14,30 +15,22 @@ class InputService:
     """
 
     def __init__(self, screen):
-        """The class constructor.
-
-        Args:
-            self (InputService): An instance of InputService.
-        """
+        """The class constructor."""
         self._screen = screen
-
-    def get_letter(self):
-        """Gets the letter that was typed. If the enter key was pressed returns 
-        an asterisk.
-
-        Args:
-            self (InputService): An instance of InputService.
+        self._keys = {}
+        self._keys[97] = Point(-1, 0) # a
+        self._keys[100] = Point(1, 0) # d
+        
+    def get_direction(self):
+        """Gets the selected direction for the given player.
 
         Returns:
-            result: The letter that was typed.
+            Point: The selected direction.
         """
-        result = ""
-        event = self._screen.get_key().key_code
-        if not event is None:
-            if event == 27:
+        direction = Point(0, 0)
+        event = self._screen.get_event()
+        if isinstance(event, KeyboardEvent):
+            if event.key_code == 27:
                 sys.exit()
-            elif event == 10:
-                result = "*"
-            elif event >= 97 and event <= 122:
-                result = chr(event)
-        return result
+            direction = self._keys.get(event.key_code, Point(0, 0))
+        return direction
