@@ -1,4 +1,5 @@
 from game import constants
+from game.point import Point
 from game.action import Action
 
 class ControlActorsAction(Action):
@@ -28,4 +29,8 @@ class ControlActorsAction(Action):
         """
         direction = self._input_service.get_direction()
         paddle = cast["paddle"][0] # there's only one in the cast
-        paddle.set_velocity(direction)  
+        paddle.set_velocity(direction)
+        if paddle.get_position().get_x() < 0:
+            paddle.set_position(Point(0,19))
+        if paddle.get_position().get_x() > constants.MAX_X-11:
+            paddle.set_position(Point(constants.MAX_X-11,19))
