@@ -22,17 +22,17 @@ class HandleCollisionsAction(Action):
         for brick in bricks:
             if ball.get_position().equals(brick.get_position()):
                 bricks.remove(brick)
-                ball.set_velocity(Point.reverse_y(ball.get_velocity))
+                ball.set_velocity(Point.reverse_y(ball.get_velocity()))
 
-        if ball.get_position().get_y == paddle.get_position().get_y:
+        if ball.get_position().equals(paddle.get_position()):
             if ball.get_position().get_x >= paddle.get_position().get_x and ball.get_position().get_x <= (paddle.get_position().get_x + 11):
-                ball.set_velocity(Point.reverse_y(ball.get_velocity))
+                ball.set_velocity(Point.reverse_y(ball.get_velocity()))
 
         if ball.get_position().get_y == constants.MAX_Y:
-            ball.set_velocity(Point.reverse_y(ball.get_velocity))
+            ball.set_velocity(Point.reverse_y(ball.get_velocity()))
         
         if ball.get_position().get_x == 0 or ball.get_position().get_x == constants.MAX_X:
-            ball.set_velocity(Point.reverse_x(ball.get_velocity))
+            ball.set_velocity(Point.reverse_x(ball.get_velocity()))
         
 
 
